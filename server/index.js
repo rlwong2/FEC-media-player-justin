@@ -23,7 +23,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/songs', (req, res) => {
-  connection.query(`SELECT * FROM songs`, (err, results) => {
+  connection.query(`SELECT * FROM songs ORDER BY RAND()`, (err, results) => {
     if (err) {
       return res.send(err);
     } else {

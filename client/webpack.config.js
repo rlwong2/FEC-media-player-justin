@@ -1,4 +1,5 @@
 const path = require('path');
+
 module.exports = {
   entry: './src/index.js',
   output: {
@@ -14,18 +15,15 @@ module.exports = {
           loader: "babel-loader"
         }
       },
-      {
-        test: /\.html$/,
-        use: [
-          {
-            loader: "html-loader"
-          }
-        ]
-      },
-      {
-        test: /\.css$/i,
-        use: ['style-loader', 'css-loader']
-      }
     ]
-  }
-};
+  },
+}
+
+// {
+//   test: /\.html$/,
+//   use: [
+//     {
+//       loader: "html-loader"
+//     }
+//   ]
+// },
