@@ -15,10 +15,8 @@ const MediaPlayer = ({ song }) => {
     <Container>
       <Image src={song.album_image} />
       <Date_Genre_Style>
-        {timeElapsed}
-        <p>
-          {song.music_genre}
-        </p>
+        {timeElapsed}<br />
+        {song.music_genre}
       </Date_Genre_Style>
       <audio controls src={song.song_url}></audio>
       <Band>{song.band_name}</Band>
