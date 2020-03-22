@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom'
 import axios from 'axios';
-import MediaPlayer from './MediaPlayer.js';
 import MediaList from './MediaList.js';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      songs: []
+      songs: [],
+      currentSong: []
     }
   }
 
@@ -19,8 +19,9 @@ class App extends React.Component {
   getMusic() {
     axios.get('/songs')
       .then(music => this.setState({
-          songs: music.data.data
-        }))
+        songs: music.data.data,
+        currentSong: music.data.data[music.data.data.length - 1]
+      }))
       .catch(function (error) {
         console.log(error);
       });
@@ -30,7 +31,10 @@ class App extends React.Component {
     return (
       <div>
         <div>
-        <MediaList songs={this.state.songs}/>
+          <MediaList
+            songs={this.state.songs}
+            currentSong={this.state.currentSong}
+          />
         </div>
       </div>
     )
