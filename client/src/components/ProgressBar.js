@@ -34,6 +34,7 @@ class ProgressBar extends React.Component {
     const currentSongTimeFormatted = moment.utc(currentSongTime * 1000).format('mm:ss');
 
     const bars = [];
+    const progress = [];
     for (let i = 0; i < 283; i++) {
       bars.push(
         <div style={{
@@ -45,10 +46,6 @@ class ProgressBar extends React.Component {
           position: 'relative',
         }}></div>
       )
-    }
-
-    const progress = [];
-    for (let i = 0; i < 283; i++) {
       progress.push(
         <div style={{
           display: 'inline-block',
