@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import moment from 'moment';
 import TogglePlay from './TogglePlay.js';
+import ProgressBar from './ProgressBar.js';
 
 // styles
 import Container from '../css-modules/Container.js';
@@ -15,6 +16,9 @@ const MediaPlayer = ({ song, currentSong }) => {
   const created = moment(song.release_date);
   const timeElapsed = created.from(now);
 
+  const [time, setTime] = useState(0);
+  const [duration, setDuration] = useState(0);
+
   return (
     <Container>
       <Image src={song.album_image} />
@@ -23,10 +27,18 @@ const MediaPlayer = ({ song, currentSong }) => {
         {song.music_genre}
       </Date_Genre_Style>
       <NameContainer>
-        <TogglePlay currentSong={currentSong} />
+        <TogglePlay
+          currentSong={currentSong}
+          setTime={setTime}
+          setDuration={setDuration}
+        />
         <Band>{song.band_name}</Band>
         <SongStyle>{song.song_name}</SongStyle>
       </NameContainer>
+      <ProgressBar
+        currentTime={time}
+        duration={duration}
+      />
     </Container>
   )
 }

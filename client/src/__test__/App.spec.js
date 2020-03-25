@@ -3,6 +3,7 @@ import { shallow, mount } from 'enzyme';
 
 import App from '../components/App.js';
 import MediaPlayer from '../components/MediaPlayer.js';
+import TogglePlay from '../components/TogglePlay.js';
 
 describe('App', () => {
   test('should render snapshot', () => {
@@ -26,43 +27,22 @@ describe('<MediaPlayer />', () => {
   });
 });
 
-describe('Play button', () => {
+describe('Play/Pause button', () => {
   const mockFn = jest.fn();
   test('play button should be defined', () => {
-    expect(PlayButton).toBeDefined();
+    expect(TogglePlay).toBeDefined();
   });
   test('should render play button correctly', () => {
-    const wrapper = shallow(<PlayButton name='play button test' />);
+    const wrapper = shallow(<TogglePlay name='play button test' />);
     expect(wrapper).toMatchSnapshot();
   });
   test('should have a play button value', () => {
-    const wrapper = shallow(<PlayButton name='play button test' />);
+    const wrapper = shallow(<TogglePlay name='play button test' />);
     expect(typeof(wrapper.find('.play').node.props.value)).toBe('string');
     expect(wrapper.find('.play').node.props.value).toEqual('play button test');
   });
   test('should call mock function when play button is clicked', () => {
-    const wrapper = shallow(<PlayButton name='play button test' handClick={mockFn} />);
-    wrapper.simulate('click');
-    expect(mockFn).toHaveBeenCalled();
-  });
-});
-
-describe('Pause button', () => {
-  const mockFn = jest.fn();
-  test('pause button should be defined', () => {
-    expect(PauseButton).toBeDefined();
-  });
-  test('should render pause button correctly', () => {
-    const wrapper = shallow(<PauseButton name='pause button test' />);
-    expect(wrapper).toMatchSnapshot();
-  });
-  test('should have a pause button value', () => {
-    const wrapper = shallow(<PauseButton name='pause button test' />);
-    expect(typeof(wrapper.find('.pause').node.props.value)).toBe('string');
-    expect(wrapper.find('.pause').node.props.value).toEqual('pause button test');
-  });
-  test('should call mock function when pause button is clicked', () => {
-    const wrapper = shallow(<PauseButton name='pause button test' handClick={mockFn} />);
+    const wrapper = shallow(<TogglePlay name='play button test' handClick={mockFn} />);
     wrapper.simulate('click');
     expect(mockFn).toHaveBeenCalled();
   });

@@ -1,0 +1,93 @@
+import React from 'react';
+import ProgressBarStyles from '../css-modules/ProgressBar.js';
+import moment from 'moment';
+
+import CurrentTimeStyle from '../css-modules/CurrentTimeStyle.js';
+import DurationStyle from '../css-modules/DurationStyle.js';
+
+class ProgressBar extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      height: []
+    }
+  }
+
+  componentDidMount() {
+    const bars = [];
+    for (let i = 0; i < 283; i++) {
+      let randomBars = Math.random() * 100
+      this.state.height.push(randomBars)
+    }
+  }
+
+  render() {
+    const progressPercent = this.props.currentTime / this.props.duration;
+    const containerWidth = 850;
+    const progressWidth = containerWidth * progressPercent;
+
+    const currentSongDuration = this.props.duration;
+    const songDurationFormatted = moment.utc(currentSongDuration * 1000).format('mm:ss');
+
+    const currentSongTime = this.props.currentTime;
+    const currentSongTimeFormatted = moment.utc(currentSongTime * 1000).format('mm:ss');
+
+    const bars = [];
+    for (let i = 0; i < 283; i++) {
+      bars.push(
+        <div style={{
+          display: 'inline-block',
+          width: '2px',
+          height: this.state.height[i + 1] + 'px',
+          background: 'white',
+          marginRight: '1px',
+          position: 'relative',
+        }}></div>
+      )
+    }
+
+    const progress = [];
+    for (let i = 0; i < 283; i++) {
+      progress.push(
+        <div style={{
+          display: 'inline-block',
+          height: this.state.height[i + 1] + 'px',
+          width: '2px',
+          background: 'orange',
+          position: 'relative',
+          marginRight: '1px',
+          marginBottom: '-83.5px',
+          zIndex: '1',
+        }}></div>
+      )
+    }
+    const difference = 0 + progressWidth
+    return (
+      <ProgressBarStyles>
+        <CurrentTimeStyle>
+          {currentSongTimeFormatted}
+        </CurrentTimeStyle>
+        <div className="progress" style={{
+          width: difference + 'px',
+          position: 'absolute',
+          background: 'none',
+          height: '100px',
+          overflow: 'hidden',
+          whiteSpace: 'nowrap',
+        }}>
+          {progress}
+        </div>
+        <div style={{
+          position: 'absolute',
+        }}>
+          {bars}
+        </div>
+        <DurationStyle>
+          {songDurationFormatted}
+        </DurationStyle>
+      </ProgressBarStyles>
+    )
+  }
+}
+
+export default ProgressBar;

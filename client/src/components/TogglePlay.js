@@ -1,20 +1,44 @@
 import React from 'react';
+import ProgressBar from './ProgressBar.js';
+
 import ButtonStyle from '../css-modules/Play-Pause.js';
 
 class TogglePlay extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isPlaying: false
+      isPlaying: false,
+      isLoaded: false
     }
     this.toggle = this.toggle.bind(this);
+    this.updateTime = this.updateTime.bind(this);
   }
 
   toggle() {
-    let myAudio = document.getElementById('myAudio');
-    this.setState({ isPlaying: !this.state.isPlaying }, () => {
-      this.state.isPlaying ? myAudio.play() : myAudio.pause();
-    });
+    if (this.state.isLoaded) {
+      const myAudio = document.getElementById('myAudio');
+      this.setState({ isPlaying: !this.state.isPlaying }, () => {
+        this.state.isPlaying ? myAudio.play() : myAudio.pause();
+      });
+    }
+  }
+
+  componentDidMount() {
+    const myAudio = document.getElementById('myAudio');
+    myAudio.onloadedmetadata = (e) => this.updateTime(e);
+    myAudio.ontimeupdate = (e) => this.updateTime(e);
+    myAudio.oncanplay = () => this.setState({ isLoaded: true });
+  }
+
+  updateTime(e) {
+    this.props.setTime(e.target.currentTime);
+    this.props.setDuration(e.target.duration);
+  }
+
+  renderProgressBar() {
+    <ProgressBar
+      currentTime={this.state.currentTime}
+      duration={this.state.duration} />
   }
 
   render() {
@@ -34,6 +58,7 @@ class TogglePlay extends React.Component {
             <ButtonStyle
               src={require = (playImg)} />}
         </a>
+        {this.renderProgressBar()}
       </span>
     )
   }
