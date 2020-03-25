@@ -2,9 +2,9 @@ import React from 'react';
 import moment from 'moment';
 
 // styles
-import ProgressBarStyles from '../css-modules/ProgressBar.js';
-import CurrentTimeStyle from '../css-modules/CurrentTimeStyle.js';
-import DurationStyle from '../css-modules/DurationStyle.js';
+import ProgressBarStyles from '../styled-components/ProgressBar.js';
+import CurrentTimeStyle from '../styled-components/CurrentTimeStyle.js';
+import DurationStyle from '../styled-components/DurationStyle.js';
 
 class ProgressBar extends React.Component {
   constructor(props) {

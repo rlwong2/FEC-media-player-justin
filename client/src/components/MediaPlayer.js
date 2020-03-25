@@ -4,12 +4,12 @@ import TogglePlay from './TogglePlay.js';
 import ProgressBar from './ProgressBar.js';
 
 // styles
-import Container from '../css-modules/Container.js';
-import Image from '../css-modules/Image.js';
-import Date_Genre_Style from '../css-modules/Date-Genre.js';
-import Band from '../css-modules/BandName.js';
-import SongStyle from '../css-modules/SongName.js';
-import NameContainer from '../css-modules/SongBandContainer.js';
+import Container from '../styled-components/Container.js';
+import Image from '../styled-components/Image.js';
+import Date_Genre_Style from '../styled-components/Date-Genre.js';
+import Band from '../styled-components/BandName.js';
+import SongStyle from '../styled-components/SongName.js';
+import NameContainer from '../styled-components/SongBandContainer.js';
 
 const MediaPlayer = ({ song, currentSong }) => {
   const now = moment();
