@@ -1,7 +1,8 @@
 import React from 'react';
-import ProgressBarStyles from '../css-modules/ProgressBar.js';
 import moment from 'moment';
 
+// styles
+import ProgressBarStyles from '../css-modules/ProgressBar.js';
 import CurrentTimeStyle from '../css-modules/CurrentTimeStyle.js';
 import DurationStyle from '../css-modules/DurationStyle.js';
 
@@ -53,7 +54,7 @@ class ProgressBar extends React.Component {
           display: 'inline-block',
           height: this.state.height[i + 1] + 'px',
           width: '2px',
-          background: 'orange',
+          backgroundImage: 'linear-gradient(-60deg, #ff5858 0%, #f09819 100%)',
           position: 'relative',
           marginRight: '1px',
           marginBottom: '-83.5px',
@@ -61,6 +62,7 @@ class ProgressBar extends React.Component {
         }}></div>
       )
     }
+
     const difference = 0 + progressWidth
     return (
       <ProgressBarStyles>
