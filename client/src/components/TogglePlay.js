@@ -1,7 +1,7 @@
 import React from 'react';
 import ProgressBar from './ProgressBar.js';
 
-import ButtonStyle from '../css-modules/Play-Pause.js';
+import ButtonStyle from '../styled-components/Play-Pause.js';
 
 class TogglePlay extends React.Component {
   constructor(props) {

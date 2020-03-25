@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import axios from 'axios';
 import MediaList from './MediaList.js';
 
-class App extends React.Component {
+class MediaFeed extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -41,4 +41,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default MediaFeed;

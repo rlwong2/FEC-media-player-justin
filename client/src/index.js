@@ -1,5 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from './components/App.js';
+import MediaFeed from './components/MediaFeed.js';
 
-ReactDOM.render(<App />, document.querySelector("#root"));
+ReactDOM.render(<MediaFeed />, document.querySelector("#MediaFeed"));
