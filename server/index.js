@@ -1,6 +1,6 @@
 const express = require('express');
 const mysql = require('mysql');
-const config = require('./config');
+// const config = require('./config');
 
 const app = express();
 
@@ -17,6 +17,11 @@ const app = express();
   });
 
 app.use(express.static('../client/dist'))
+
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  next();
+});
 
 app.get('/', (req, res) => {
   res.send('this works')

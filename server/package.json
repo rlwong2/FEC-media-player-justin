@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "db-create": "mysql -u root < seeds/media-schema.sql",
-    "seed": "mysql -u root media < seeds/InsertData.sql"
+    "seed": "mysql -u root media < seeds/InsertData.sql",
+    "server": "nodemon index.js"
   },
   "keywords": [],
   "author": "",
@@ -15,5 +16,8 @@
     "express": "^4.17.1",
     "mysql": "^2.18.1",
     "s3": "^4.4.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
   }
 }
